@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Profil
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <!--Choix Connexion/Inscription -->
+  <ion-header *ngIf="!(displayLoginForm || displayRegistrationForm || isConnected)">
+    <ion-button (click)="displayLoginForm = !displayLoginForm">Connexion</ion-button>
+    <ion-button (click)="displayRegistrationForm = !displayRegistrationForm">Inscription</ion-button>
+  </ion-header>
+
+  <!--Form de connexion -->
+  <ion-header *ngIf="displayLoginForm">
+     <ion-button (click)="displayLoginForm = !displayLoginForm">Retour</ion-button>
+     <app-login-form (changed)="loginChanged($event)"></app-login-form>
+  </ion-header>
+
+  <!--Form d'inscription -->
+  <ion-header *ngIf="displayRegistrationForm">
+     <ion-button (click)="displayRegistrationForm = !displayRegistrationForm">Retour</ion-button>
+     <app-registration-form (changed)="registertrationChanged()"></app-registration-form>
+  </ion-header>
+
+  <!--Information du profil -->
+  <ion-header *ngIf="isConnected">
+     <ion-button (click)="isConnected = !isConnected">Déconnexion</ion-button>
+  </ion-header>
+
+</ion-content>

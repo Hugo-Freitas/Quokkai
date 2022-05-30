@@ -3,11 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-tab2',
-  templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss'],
+  selector: 'app-actualites',
+  templateUrl: './actualites.page.html',
+  styleUrls: ['./actualites.page.scss'],
 })
-export class Tab2Page implements OnInit {
+export class ActualitesPage implements OnInit {
   region?;
 
   constructor(private route: ActivatedRoute, private location: Location) {}

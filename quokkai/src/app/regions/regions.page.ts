@@ -3,11 +3,11 @@ import { Region } from '../region';
 import { RegionService } from '../region.service';
 
 @Component({
-  selector: 'app-tab1',
-  templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss'],
+  selector: 'app-regions',
+  templateUrl: './regions.page.html',
+  styleUrls: ['./regions.page.scss'],
 })
-export class Tab1Page implements OnInit {
+export class RegionsPage implements OnInit {
   regions: Region[] = [];
 
   constructor(private regionService: RegionService) {}

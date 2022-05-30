@@ -10,17 +10,26 @@ const routes: Routes = [
       {
         path: 'regions',
         loadChildren: () =>
-          import('../tab1/tab1.module').then((m) => m.Tab1PageModule),
+          import('../regions/regions.module').then((m) => m.RegionsPageModule),
       },
       {
         path: 'actualites/:region',
         loadChildren: () =>
-          import('../tab2/tab2.module').then((m) => m.Tab2PageModule),
+          import('../actualites/actualites.module').then(
+            (m) => m.ActualitesPageModule
+          ),
       },
       {
         path: 'profil',
         loadChildren: () =>
-          import('../tab3/tab3.module').then((m) => m.Tab3PageModule),
+          import('../profil/profil.module').then((m) => m.ProfilPageModule),
+      },
+      {
+        path: 'mdp-oublie',
+        loadChildren: () =>
+          import('../mdp-oublie/mdp-oublie.module').then(
+            (m) => m.MdpOubliePageModule
+          ),
       },
       {
         path: '',
