@@ -1,0 +1,11 @@
+<form>
+
+  <ion-input name="email" placeholder="E-mail" [(ngModel)]="loginInfo.email"></ion-input>
+  <ion-input name="password" placeholder="Mot de passe" [(ngModel)]="loginInfo.password"></ion-input>
+  <ion-label *ngIf="errorMessage" color="danger">Les informations données sont incorrectes</ion-label>
+  <ion-button (click)="login()">Connexion</ion-button>
+
+  <ion-tab-button tab="mdp-oublie">Mot de passe oublié</ion-tab-button>
+
+</form>
+

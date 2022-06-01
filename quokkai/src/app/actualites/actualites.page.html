@@ -1,0 +1,17 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Les actualités positives de {{region}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <ion-item *ngFor="let article of articles">
+
+    <app-articles [article]="article" ></app-articles>
+
+  </ion-item>
+
+</ion-content>
