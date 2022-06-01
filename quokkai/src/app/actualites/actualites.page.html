@@ -7,34 +7,11 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card>
-    <ion-card-header>
-      <ion-card-subtitle>Wow j'ai 0 inspi pour le titre</ion-card-subtitle>
-      <ion-card-title>Wow j'ai 0 inspi pour le titre</ion-card-title>
-    </ion-card-header>
+  
+  <ion-item *ngFor="let article of articles">
 
-    <ion-card-content>
-      Wow j'ai 0 inspi pour le titre Wow j'ai 0 inspi pour le titre Wow j'ai 0 inspi pour le titre
-      Wow j'ai 0 inspi pour le titre Wow j'ai 0 inspi pour le titre Wow j'ai 0 inspi pour le titre
-      Wow j'ai 0 inspi pour le titre Wow j'ai 0 inspi pour le titre Wow j'ai 0 inspi pour le titre
-      Wow j'ai 0 inspi pour le titre Wow j'ai 0 inspi pour le titre Wow j'ai 0 inspi pour le titre
-      Wow j'ai 0 inspi pour le titre Wow j'ai 0 inspi pour le titre Wow j'ai 0 inspi pour le titre
-    </ion-card-content>
-  </ion-card>
+    <app-articles [article]="article" ></app-articles>
 
-  <ion-card>
-    <ion-card-header>
-      <ion-card-subtitle>Wow j'ai 0 inspi pour le titre</ion-card-subtitle>
-      <ion-card-title>Wow j'ai 0 inspi pour le titre</ion-card-title>
-    </ion-card-header>
-
-    <ion-card-content>
-      Wow j'ai 0 inspi pour le titre Wow j'ai 0 inspi pour le titre Wow j'ai 0 inspi pour le titre
-      Wow j'ai 0 inspi pour le titre Wow j'ai 0 inspi pour le titre Wow j'ai 0 inspi pour le titre
-      Wow j'ai 0 inspi pour le titre Wow j'ai 0 inspi pour le titre Wow j'ai 0 inspi pour le titre
-      Wow j'ai 0 inspi pour le titre Wow j'ai 0 inspi pour le titre Wow j'ai 0 inspi pour le titre
-      Wow j'ai 0 inspi pour le titre Wow j'ai 0 inspi pour le titre Wow j'ai 0 inspi pour le titre
-    </ion-card-content>
-  </ion-card>
+  </ion-item>
 
 </ion-content>

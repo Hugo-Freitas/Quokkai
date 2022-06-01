@@ -7,14 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { ActualitesPageRoutingModule } from './actualites-routing.module';
 
 import { ActualitesPage } from './actualites.page';
+import { ArticlesComponent } from '../articles/articles.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ActualitesPageRoutingModule
+    ActualitesPageRoutingModule,
   ],
-  declarations: [ActualitesPage]
+  declarations: [ActualitesPage, ArticlesComponent],
 })
 export class ActualitesPageModule {}
