@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-profil',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profil.page.scss'],
 })
 export class ProfilPage implements OnInit {
+  @Input() userInfo: any = { email: '', region: '' };
   isConnected = false;
   displayLoginForm = false;
   displayRegistrationForm = false;
@@ -24,5 +25,7 @@ export class ProfilPage implements OnInit {
     this.displayRegistrationForm = false;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    /* Charger les infos du profil */
+  }
 }

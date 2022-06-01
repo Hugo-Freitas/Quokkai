@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, AfterViewChecked } from '@angular/core';
 import { Region } from '../region';
 import { RegionService } from '../region.service';
 
@@ -7,7 +7,7 @@ import { RegionService } from '../region.service';
   templateUrl: './registration-form.component.html',
   styleUrls: ['./registration-form.component.scss'],
 })
-export class RegistrationFormComponent implements OnInit {
+export class RegistrationFormComponent implements OnInit, AfterViewChecked {
   @Input() registrationInfo: any = { email: '', region: '', password: '' };
   @Output() changed = new EventEmitter<boolean>();
   errorMessage = false;
@@ -17,6 +17,10 @@ export class RegistrationFormComponent implements OnInit {
 
   ngOnInit() {
     this.getRegions();
+  }
+
+  ngAfterViewChecked() {
+    this.errorMessage = false;
   }
 
   getRegions(): void {
@@ -31,7 +35,7 @@ export class RegistrationFormComponent implements OnInit {
       this.errorMessage = false;
       this.changed.emit();
     } else {
-    /* else message d'erreur */
+      /* else message d'erreur */
       this.errorMessage = true;
     }
   }

@@ -1,11 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, AfterViewChecked } from '@angular/core';
 
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss'],
 })
-export class LoginFormComponent implements OnInit {
+export class LoginFormComponent implements OnInit, AfterViewChecked {
   @Input() loginInfo: any = { email: '', password: '' };
   @Output() changed = new EventEmitter<boolean>();
   errorMessage = false;
@@ -14,14 +14,17 @@ export class LoginFormComponent implements OnInit {
 
   ngOnInit() {}
 
+  ngAfterViewChecked() {
+    this.errorMessage = false;
+  }
+
   login() {
     /* if le login est bon alors on renvoie au profil */
     if (true) {
       this.errorMessage = false;
       this.changed.emit(true);
-    }
+    } else {
     /* else message d'erreur */
-    else {
       this.errorMessage = true;
     }
   }
