@@ -6,9 +6,8 @@ const events = require('./events');
 
 const connection = mysql.createConnection({
   host     : '34.155.38.235',
-  user     : 'quokkai:europe-west9:myinstance',
-  password : 'Antoinejean31',
-  database : 'quokkai'
+  user     : 'root',
+  password : 'Antoinejean31'
 });
 
 connection.connect();
@@ -23,3 +22,5 @@ const app = express()
 app.listen(port, () => {
   console.log(`Express server listening on port ${port}`);
 });
+
+connection.end();
