@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-card-subtitle>Quokkaï, le sourire dans votre poche !</ion-card-subtitle>
+    <ion-title>Inscription</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-header>
+     <form>
+
+      <ion-input name="email" placeholder="E-mail" [(ngModel)]="registrationInfo.email"></ion-input>
+      <ion-select name="region" placeholder="Choisissez votre région" [(ngModel)]="registrationInfo.region">
+          <ion-select-option *ngFor="let region of regions" value="{{region.name}}">{{region.name}}</ion-select-option>
+      </ion-select>
+      <ion-input name="password" placeholder="Mot de passe" [(ngModel)]="registrationInfo.password"  type="password"></ion-input>
+      <ion-input name="confirm-password" placeholder="Confirmer mot de passe" [(ngModel)]="registrationInfo.confirmPassword" type="password"></ion-input>
+      <ion-label *ngIf="errorMessage" color="danger">Les informations données sont incorrectes</ion-label>
+
+      <ion-card-content>
+        Déjà membre ? 
+        <ion-tab-button (click)="redirect('')">Se connecter</ion-tab-button>
+      </ion-card-content>
+
+      <ion-button (click)="register()">Bienvenue !</ion-button>
+
+    </form>
+  </ion-header>
+</ion-content>

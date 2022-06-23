@@ -1,16 +1,17 @@
-<a href="{{article.link}}">
-  <ion-card>
-      <ion-card-header>
-        <!--<ion-card-subtitle>{{ article.region }}</ion-card-subtitle>-->
-        <ion-card-title>{{ article.title }}</ion-card-title>
-      </ion-card-header>
+<ion-card>
+  <a href="{{article.link}}" target="_blank">
+    <ion-card-header>
+      <!--<ion-card-subtitle>{{ article.region }}</ion-card-subtitle>-->
+      <ion-card-title>{{ article.title }}</ion-card-title>
+    </ion-card-header>
 
-      <ion-card-content>
-        {{ article.content }}
-      </ion-card-content>
-
-      <ion-card-footer>
-        {{ article.date }}
-      </ion-card-footer>
-  </ion-card>
-</a>
+    <ion-card-content>
+      {{ article.content }}
+    </ion-card-content>
+  </a>
+  <ion-footer>
+    {{ article.date.getDay() }}/{{ article.date.getMonth() }}/{{ article.date.getFullYear() }}
+    <ion-icon size="large" name="heart-outline" (click)="heartClicked = !heartClicked"></ion-icon>
+    <ion-icon size="large" name="share-outline"></ion-icon>
+  </ion-footer>
+</ion-card>

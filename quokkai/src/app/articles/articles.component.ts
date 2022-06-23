@@ -8,6 +8,7 @@ import { Article } from '../article';
 })
 export class ArticlesComponent implements OnInit {
   @Input() article: Article;
+  heartClicked = false;
 
   constructor() { }
 
