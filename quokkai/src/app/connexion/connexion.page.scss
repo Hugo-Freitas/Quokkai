@@ -54,6 +54,14 @@ ion-input {
 
 .mdpOublie {
     color: #000080;
+    text-decoration: underline;
+    font-style: italic;
+    font-size: 14px;
+    text-align: left;
+}
+
+ion-tab-button {
+    width: 40px;
 }
 
 .inscription {
