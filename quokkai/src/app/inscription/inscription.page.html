@@ -1,28 +1,34 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-card-subtitle>Quokkaï, le sourire dans votre poche !</ion-card-subtitle>
-    <ion-title>Inscription</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <ion-header>
+  <ion-header class="accroche">
+      <p>Quokkaï, le sourire dans votre poche !</p>
+      <h2>Inscription</h2>
+  </ion-header>
+
+  <ion-header class="informationsInscription">
      <form>
 
+      <p class="legende">E-mail</p>
       <ion-input name="email" placeholder="E-mail" [(ngModel)]="registrationInfo.email"></ion-input>
+      
       <ion-select name="region" placeholder="Choisissez votre région" [(ngModel)]="registrationInfo.region">
           <ion-select-option *ngFor="let region of regions" value="{{region.name}}">{{region.name}}</ion-select-option>
       </ion-select>
+
+      <p class="legende">Mot de passe</p>
       <ion-input name="password" placeholder="Mot de passe" [(ngModel)]="registrationInfo.password"  type="password"></ion-input>
+      <p class="legende">Confirmer votre mot de passe</p>
       <ion-input name="confirm-password" placeholder="Confirmer mot de passe" [(ngModel)]="registrationInfo.confirmPassword" type="password"></ion-input>
       <ion-label *ngIf="errorMessage" color="danger">Les informations données sont incorrectes</ion-label>
 
-      <ion-card-content>
-        Déjà membre ? 
-        <ion-tab-button (click)="redirect('')">Se connecter</ion-tab-button>
-      </ion-card-content>
+      <div class="connexion">
+        <ion-card-content>
+          <ion-tab-button (click)="redirect('')">Déjà membre ? Se connecter</ion-tab-button>
+        </ion-card-content>
+      </div>
 
-      <ion-button (click)="register()">Bienvenue !</ion-button>
+      <div class="inscription">
+        <ion-button color="clear" (click)="register()">Bienvenue !</ion-button>
+      </div>
 
     </form>
   </ion-header>
