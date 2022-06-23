@@ -4,4 +4,5 @@ export interface Article {
   content: string;
   region: string;
   id: number;
+  //rajouter date ?
 }

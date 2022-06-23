@@ -1,19 +1,19 @@
-<ion-header [translucent]="true">
+<!--<ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
       Les régions de France
     </ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header>-->
 
 <ion-content [fullscreen]="true">
 
-  <ion-list class="regions">
+  <ion-list>
     
-    <ion-item *ngFor="let region of regions">
+    <ion-item *ngFor="let region of regions" class="ion-text-center">
 
-      <ion-tab-button size="large" tab="actualites/{{region.name}}">
-        <ion-label class="{{region.name}}">{{region.name}}</ion-label>
+      <ion-tab-button tab="actualites/{{region.name}}">
+          <ion-label class="{{region.name}}">{{region.name}}</ion-label>
       </ion-tab-button>
       
     </ion-item>
