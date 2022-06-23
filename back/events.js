@@ -20,7 +20,7 @@ function createRouter(db) {
   });
   router.get('/event', function (req, res, next) {
     db.query(
-      'SELECT id, name, description, date FROM events WHERE owner=? ORDER BY date LIMIT 10 OFFSET ?',
+      'SELECT * FROM article',
       [owner, 10*(req.params.page || 0)],
       (error, results) => {
         if (error) {
