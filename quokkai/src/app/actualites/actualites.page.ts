@@ -32,6 +32,7 @@ export class ActualitesPage implements OnInit {
           'porta nec. Vestibulum convallis, nunc id lacinia fringilla, sapien odio vehicula lectus, dictum euismod erat tellus id enim. ',
         region: this.region,
         id: 1,
+        date: new Date(),
       },
       {
         title: 'Article ultra positif',
@@ -45,6 +46,7 @@ export class ActualitesPage implements OnInit {
           's tortor, mattis in velit a, dictum fermentum odio. Vivamus eget arcu nec nulla maximus dictum in feugiat massa.,',
         region: this.region,
         id: 2,
+        date: new Date(),
       }
     );
   }
