@@ -12,7 +12,13 @@ const connection = mysql.createConnection({
   database : 'quokkai'
 });
 
-connection.connect();
+connection.connect(function(err) {
+  if (err) {
+    console.error('Error connecting: ' + err.stack);
+    return;
+  }
+  console.log('Connected as thread id: ' + connection.threadId);
+});;
 
 const port = process.env.PORT || 8080;
 
@@ -29,6 +35,26 @@ app.listen(port, () => {
   console.log(`Express server listening on port ${port}`);
 });
 
+connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
+  if (err) throw err;
+  console.log('The solution is: ', rows[0].solution);
+});
+
+/*connection.query('SELECT * FROM article AS solution', function(err, rows, fields) {
+  if (err) throw err;
+  console.log('The solution is: ', rows[0].solution);
+});*/
+
+app.route('/article/')
+  .get(function(req, res, next) {
+    connection.query(
+      "SELECT * FROM `article`",
+      function(error, results, fields) {
+        if (error) throw error;
+        res.json(results);
+      }
+    );
+  });
 
 
-connection.end();
+module.exports = connection;

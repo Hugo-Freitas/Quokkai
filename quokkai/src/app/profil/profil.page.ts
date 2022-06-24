@@ -32,10 +32,10 @@ export class ProfilPage implements OnInit {
 
   test(): void {
     console.log("test")
-    this.service.testing().subscribe((response) => {
+    this.service.article()/*.subscribe((response) => {
       console.log('Response from the API is ', response)
     }, (error) => {
       console.log("Error is ", error);
-    })
+    })*/
   }
 }

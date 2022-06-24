@@ -11,6 +11,7 @@ function createRouter(db) {
       "statusMessage": "Coucou Antoine"
     })
   })
+  
   /*
   router.post('/event', (req, res, next) => {
     db.query(

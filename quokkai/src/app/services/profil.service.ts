@@ -11,5 +11,9 @@ export class ProfilService {
   testing(){
     return this.http.get('api/testing')
   }
-
+  article(){
+    return this.http.get('http://localhost:8080/article').subscribe((response) => {
+    console.log(response);
+    });
+  }
 }
