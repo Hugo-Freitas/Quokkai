@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ProfilService } from '../services/profil.service';
 
 @Component({
   selector: 'app-profil',
@@ -11,7 +12,7 @@ export class ProfilPage implements OnInit {
   displayLoginForm = false;
   displayRegistrationForm = false;
 
-  constructor() {}
+  constructor(private service: ProfilService) {}
 
   loginChanged(loginResult: boolean) {
     this.isConnected = loginResult;
@@ -27,5 +28,14 @@ export class ProfilPage implements OnInit {
 
   ngOnInit(): void {
     /* Charger les infos du profil */
+  }
+
+  test(): void {
+    console.log("test")
+    this.service.testing().subscribe((response) => {
+      console.log('Response from the API is ', response)
+    }, (error) => {
+      console.log("Error is ", error);
+    })
   }
 }

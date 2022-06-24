@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const events = require('./events');
 
+
 const connection = mysql.createConnection({
   host     : '34.155.38.235',
   user     : 'root',
@@ -20,8 +21,14 @@ const app = express()
   .use(bodyParser.json())
   .use(events(connection));
 
+app.get('', (req, res) => {
+  res.send("Hello World !")
+})
+
 app.listen(port, () => {
   console.log(`Express server listening on port ${port}`);
 });
+
+
 
 connection.end();
