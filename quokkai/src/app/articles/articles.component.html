@@ -11,7 +11,31 @@
   </a>
   <ion-footer>
     {{ article.date.getDay() }}/{{ article.date.getMonth() }}/{{ article.date.getFullYear() }}
-    <ion-icon size="large" name="heart-outline" (click)="heartClicked = !heartClicked"></ion-icon>
-    <ion-icon size="large" name="share-outline"></ion-icon>
+    <ion-icon size="large" name="heart-outline" *ngIf="!heartClicked" (click)="heartClicked = !heartClicked"></ion-icon>
+    <ion-icon size="large" name="heart-sharp" *ngIf="heartClicked" (click)="heartClicked = !heartClicked"></ion-icon>
+    <ion-icon size="large" name="share-outline" (click)="copyLink()"></ion-icon>
   </ion-footer>
 </ion-card>
+
+<!-- Code pour avoir une image mais azi c'est moche sans scss-->
+<!--
+<ion-app>
+  <ion-content fullscreen>
+    <a href="{{article.link}}" target="_blank">
+      <ion-card>
+        <img src="https://sain-et-naturel.ouest-france.fr/wp-content/uploads/2022/04/adorable-quokka.jpg" />
+        <ion-card-header>
+          <ion-card-title>{{ article.title }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>{{ article.content }}</ion-card-content>
+      </ion-card>
+    </a>
+    <ion-footer>
+      {{ article.date.getDay() }}/{{ article.date.getMonth() }}/{{ article.date.getFullYear() }}
+      <ion-icon size="large" name="heart-outline" *ngIf="!heartClicked" (click)="heartClicked = !heartClicked"></ion-icon>
+      <ion-icon size="large" name="heart-sharp" *ngIf="heartClicked" (click)="heartClicked = !heartClicked"></ion-icon>
+      <ion-icon size="large" name="share-outline" (click)="copyLink()"></ion-icon>
+    </ion-footer>
+  </ion-content>
+</ion-app>
+-->
