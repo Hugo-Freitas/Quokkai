@@ -7,6 +7,17 @@ ion-title {
     color: #000080;
 }
 
+app-articles {
+    background-image: url('../../assets/icon/test.png');
+    //background: transparent;
+    box-shadow: 0;
+}
+
+ion-content {
+    width: calc(100% + 10px);
+    background-image: url('../../assets/icon/test.png')
+}
+
 ion-item {
-    background-color: red;
+    background: transparent;
 }

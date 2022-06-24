@@ -1,0 +1,85 @@
+ion-content {
+    --overflow: hidden;
+    //background-image: url('../../assets/icon/test.png');
+    width: 375px;
+    height: 667px;
+}
+
+ion-header {
+    background-image: url('../../assets/icon/fond.png');
+}
+
+.accroche {
+    height: 33.3%;
+    padding-top: 80px;
+    text-align: center;
+    background-color: transparent;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.accroche p {
+    color:#000080;
+    font-size: 22px;
+    text-shadow: 1px 1px 2px lightgray;
+}
+
+.accroche h2 {
+    color:#000080;
+    font-size: 26px;
+    text-shadow: 1px 1px 2px lightgray;
+}
+
+.informationsConnexion {
+    height: 66.6%;
+    background-color: transparent;
+    padding-top: 50px;
+}
+
+.form {
+    max-height: 444px;
+}
+
+.infos {
+    padding: 25px;
+}
+
+ion-input {
+    height: 40px;
+    border-radius: 25px;
+    margin-top: 15px;
+    background-color: white;
+    box-shadow: 1px 1px 1px 1px white;
+}
+
+.mdpOublie {
+    color: #000080;
+    text-decoration: underline;
+    font-style: italic;
+    font-size: 14px;
+    text-align: left;
+}
+
+ion-tab-button {
+    width: 40px;
+}
+
+.inscription {
+    color: #000080;
+    margin-top: 15px;
+    margin-bottom: -15px;
+}
+
+.connexion {
+    padding-left: auto;
+    padding-right: auto;
+    text-align: center;
+}
+
+ion-button {
+    border-radius: 25px;
+    color: #000080;
+    width: 150px;  
+    background-color: white;
+    box-shadow: 1px 1px 1px 1px white;
+}
