@@ -4,7 +4,7 @@ import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
-    path: 'quokkai',
+    path: '',
     component: TabsPage,
     children: [
       {
@@ -25,22 +25,15 @@ const routes: Routes = [
           import('../profil/profil.module').then((m) => m.ProfilPageModule),
       },
       {
-        path: 'mdp-oublie',
-        loadChildren: () =>
-          import('../mdp-oublie/mdp-oublie.module').then(
-            (m) => m.MdpOubliePageModule
-          ),
-      },
-      {
         path: '',
-        redirectTo: '/quokkai/profil',
+        redirectTo: '/quokkai/regions',
         pathMatch: 'full',
       },
     ],
   },
   {
     path: '',
-    redirectTo: '/quokkai/profil',
+    redirectTo: '/quokkai/regions',
     pathMatch: 'full',
   },
 ];

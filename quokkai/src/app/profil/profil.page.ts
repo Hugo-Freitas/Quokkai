@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ProfilService } from '../services/profil.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-profil',
@@ -8,26 +10,19 @@ import { ProfilService } from '../services/profil.service';
 })
 export class ProfilPage implements OnInit {
   @Input() userInfo: any = { email: '', region: '' };
-  isConnected = false;
-  displayLoginForm = false;
-  displayRegistrationForm = false;
 
-  constructor(private service: ProfilService) {}
 
-  loginChanged(loginResult: boolean) {
-    this.isConnected = loginResult;
-    this.displayLoginForm = false;
-    this.displayRegistrationForm = false;
-  }
+  constructor(private service: ProfilService, private router: Router) {}
 
-  registertrationChanged() {
-    this.isConnected = false;
-    this.displayLoginForm = false;
-    this.displayRegistrationForm = false;
+
+  disconnect() {
+    /* déconnecter l'utilisateur */
+      this.router.navigate(['']);
   }
 
   ngOnInit(): void {
     /* Charger les infos du profil */
+    /* Verif si le gars est bien co */
   }
 
   test(): void {

@@ -1,14 +1,14 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Les actualités positives de {{region}}
+      {{region}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   
-  <ion-item *ngFor="let article of articles">
+  <ion-item class="ion-no-padding" color="none" lines="none" *ngFor="let article of articles">
 
     <app-articles [article]="article" ></app-articles>
 

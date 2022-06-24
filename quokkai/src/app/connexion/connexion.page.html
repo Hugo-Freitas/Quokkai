@@ -1,0 +1,33 @@
+<ion-content>
+  <ion-header class="accroche">
+    <p>Quokkaï, le sourire dans votre poche !</p>
+    <h2>Connexion</h2>
+  </ion-header>
+
+  <ion-header class="informationsConnexion">
+    <div class="form">
+      <form>
+
+        <div class="infos">
+          <ion-input name="email" class="text-input" placeholder="E-mail" [(ngModel)]="loginInfo.email"></ion-input>
+          <ion-input name="password" class="text-input" placeholder="Mot de passe" [(ngModel)]="loginInfo.password" type="password"></ion-input>
+        </div> 
+
+        <ion-label *ngIf="errorMessage" color="danger">Les informations données sont incorrectes</ion-label>
+        
+        <ion-tab-button class="mdpOublie" (click)="redirect('/mdp-oublie')">Mot de passe oublié ?</ion-tab-button>
+        
+        <div class="inscription">
+          <ion-card-content>
+            <ion-tab-button (click)="redirect('/inscription')">Pas encore membre ? S'inscrire</ion-tab-button>   
+          </ion-card-content>
+        </div>
+        
+        <div class="connexion">
+          <ion-button class="connexionBtn" color="clear" (click)="login()">Connexion</ion-button>
+        </div>
+
+      </form>
+    </div>
+  </ion-header>
+</ion-content>

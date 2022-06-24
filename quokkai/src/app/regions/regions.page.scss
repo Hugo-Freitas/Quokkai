@@ -1,0 +1,23 @@
+ion-content {
+    position : initial;
+}
+
+ion-list {
+    //background-color: red;
+    background-image: url('../../assets/icon/test.png');
+}
+
+ion-item {
+    margin-top: 3%;
+    margin-bottom: 3%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+ion-tab-button {
+    font-size: 16px;
+    color: #000080;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
