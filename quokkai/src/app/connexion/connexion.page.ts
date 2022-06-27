@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProfilService } from '../services/profil.service';
 
 @Component({
   selector: 'app-connexion',
@@ -10,7 +11,10 @@ export class ConnexionPage implements OnInit {
   @Input() loginInfo: any = { email: '', password: '' };
   errorMessage = false;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private ProfilService: ProfilService
+    ) {}
 
   ngOnInit() {}
 
@@ -24,6 +28,10 @@ export class ConnexionPage implements OnInit {
       /* else message d'erreur */
       this.errorMessage = true;
     }
+  }
+
+  test(): void {
+    // this.ProfilService.testing();
   }
 
   redirect(route) {

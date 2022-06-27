@@ -56,5 +56,41 @@ app.route('/article/')
     );
   });
 
+app.post('/inscription',(req,res) => {
 
+  let Email = req.body.email
+  let Password = req.body.password
+
+  let qr = `INSERT INTO user(mail, password) VALUES ('${Email}','${Password}')` ;
+
+  connection.query(qr,(err,result) => {
+    if (err){console.log(err);}
+
+    res.send({
+      message:'data inserted'
+    })
+    
+
+  })
+
+})
+
+/*
+app.route('/test/:id')
+  .get(function(req, res, next) {
+
+    console.log(req.body,'idk')
+
+    let Email = req.body.mail
+    let Password = req.body.password
+
+    connection.query(
+      `INSERT INTO user(mail, password) VALUES ('${Email}','${Password}')`,
+      function(error, results, fields) {
+        if (error) throw error;
+        res.json(results);
+      }
+    );
+  });
+*/
 module.exports = connection;
