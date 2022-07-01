@@ -60,8 +60,9 @@ app.post('/inscription',(req,res) => {
 
   let Email = req.body.email
   let Password = req.body.password
+  let Region = req.body.region
 
-  let qr = `INSERT INTO user(mail, password) VALUES ('${Email}','${Password}')` ;
+  let qr = `INSERT INTO user(mail, password, region) VALUES ('${Email}', '${Password}', '${Region}')` ;
 
   connection.query(qr,(err,result) => {
     if (err){console.log(err);}
