@@ -53,6 +53,7 @@ ion-input {
     --placeholder-color: #000080;
     --padding-start: 20px;
     --placeholder-opacity: 0.33;
+    --placeholder-font-style: italic;
 }
 
 .mdpOublie {
@@ -77,6 +78,7 @@ ion-button {
     width: 150px;
     background-color: white;
     box-shadow: 1px 1px 1px 1px white;
+    font-size: 18px;
 }
 
 ion-select {
