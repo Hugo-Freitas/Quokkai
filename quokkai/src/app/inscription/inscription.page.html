@@ -20,6 +20,7 @@
         <ion-input name="password" placeholder="Mot de passe" [(ngModel)]="registrationInfo.password"  type="password"></ion-input>
         <p class="legende">Confirmer votre mot de passe</p>
         <ion-input name="confirm-password" placeholder="Confirmer mot de passe" [(ngModel)]="registrationInfo.confirmPassword" type="password"></ion-input>
+        
         <ion-label *ngIf="errorMessage" color="danger">Les informations données sont incorrectes</ion-label>
   
         <div class="connexion">
