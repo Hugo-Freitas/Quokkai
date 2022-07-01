@@ -10,6 +10,7 @@ import { ProfilService } from '../services/profil.service';
 export class ConnexionPage implements OnInit {
   @Input() loginInfo: any = { email: '', password: '' };
   errorMessage = false;
+  message: string = '';
 
   constructor(
     private router: Router,
@@ -19,20 +20,32 @@ export class ConnexionPage implements OnInit {
   ngOnInit() {}
 
   login() {
-    /* if le login est bon */
-    if (true) {
-      this.errorMessage = false;
-      /* recup la region par defaut de l'utilisateur */
-      this.router.navigate(['/quokkai/actualites/Bretagne']);
+    
+    if ((this.loginInfo.email == '') && (this.loginInfo.password != '')) {
+      this.message = 'Veuillez entrer un email.' ;
+      this.errorMessage = true ;
+    } else if ((this.loginInfo.email != '') && (this.loginInfo.password == '')) {
+      this.message = 'Veuillez entrer un mot de passe.' ;
+      this.errorMessage = true ;
+    } else if ((this.loginInfo.email == '') && (this.loginInfo.password == '')){
+      this.message = 'Veuillez remplir les champs.' ;
+      this.errorMessage = true ;
     } else {
-      /* else message d'erreur */
-      this.errorMessage = true;
+      this.ProfilService.connexion(this.loginInfo).subscribe((res)=>{
+        if (res.status == 404) {
+          this.message = 'Données incorrectes.' ;
+          this.errorMessage = true;
+        } else if (res.status == 200){
+          this.errorMessage = true;
+          // this.router.navigate('');
+          this.message = 'Vous etes connecté !' ;
+        } else {
+          console.log(res.status)
+        } 
+      })
     }
   }
 
-  test(): void {
-    // this.ProfilService.testing();
-  }
 
   redirect(route) {
     this.router.navigate([route]);

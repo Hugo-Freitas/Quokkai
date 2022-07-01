@@ -12,6 +12,9 @@ export class ProfilService {
   inscription(data:any): Observable<any> {
     return this.http.post(`http://localhost:8080/inscription`,data);
   }
+  connexion(data:any): Observable<any> {
+    return this.http.post(`http://localhost:8080/connexion`,data);
+  }
   article(){
     return this.http.get('http://localhost:8080/article').subscribe((response) => {
       console.log(response);

@@ -75,22 +75,34 @@ app.post('/inscription',(req,res) => {
 
 })
 
-/*
-app.route('/test/:id')
-  .get(function(req, res, next) {
+app.post('/connexion',(req,res) => {
 
-    console.log(req.body,'idk')
+  let Email = req.body.email
+  let Password = req.body.password
 
-    let Email = req.body.mail
-    let Password = req.body.password
+  let qr = `SELECT * FROM user where mail='${Email}' AND password='${Password}'` ;
 
-    connection.query(
-      `INSERT INTO user(mail, password) VALUES ('${Email}','${Password}')`,
-      function(error, results, fields) {
-        if (error) throw error;
-        res.json(results);
-      }
-    );
-  });
-*/
+
+  connection.query(qr,(err,result) => {
+    if (err){console.log(err);}
+
+    console.log(result)
+
+    if (Object.keys(result).length === 0){
+      res.send({
+        message:'User not found',
+        status: 404
+      })
+    } else {
+      res.send({
+        message:'User found',
+        status: 200
+      })
+    }
+    
+  })
+})
+
+
+
 module.exports = connection;
