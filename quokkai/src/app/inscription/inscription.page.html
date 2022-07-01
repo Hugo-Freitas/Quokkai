@@ -20,38 +20,19 @@
         <ion-input name="password" placeholder="Mot de passe" [(ngModel)]="registrationInfo.password"  type="password"></ion-input>
         <p class="legende">Confirmer votre mot de passe</p>
         <ion-input name="confirm-password" placeholder="Confirmer mot de passe" [(ngModel)]="registrationInfo.confirmPassword" type="password"></ion-input>
-        
-        <ion-label *ngIf="errorMessage" color="danger">Les informations données sont incorrectes</ion-label>
-  
+        <ion-label *ngIf="errorMessage" color="danger" class="errorMessage">{{message}}</ion-label>
+
         <div class="connexion">
           <ion-card-content>
-            <ion-tab-button (click)="redirect('')">Déjà membre ? Se connecter</ion-tab-button>
+            <ion-tab-button (click)="redirect('')"><p>Déjà membre ? <span style="font-style:italic">Se connecter</span></p></ion-tab-button>
           </ion-card-content>
         </div>
-  
+
         <div class="inscription">
           <ion-button color="clear" (click)="inscription()">Bienvenue !</ion-button>
         </div>
-  
+
       </form>
     </ion-header>
-
-      <p class="legende">Mot de passe</p>
-      <ion-input name="password" placeholder="Mot de passe" [(ngModel)]="registrationInfo.password"  type="password"></ion-input>
-      <p class="legende">Confirmer votre mot de passe</p>
-      <ion-input name="confirm-password" placeholder="Confirmer mot de passe" [(ngModel)]="registrationInfo.confirmPassword" type="password"></ion-input>
-      <ion-label *ngIf="errorMessage" color="danger">{{message}}</ion-label>
-
-      <div class="connexion">
-        <ion-card-content>
-          <ion-tab-button (click)="redirect('')">Déjà membre ? Se connecter</ion-tab-button>
-        </ion-card-content>
-      </div>
-
-      <div class="inscription">
-        <ion-button color="clear" (click)="inscription()">Bienvenue !</ion-button>
-      </div>
-
-    </form>
-  </ion-header>
+  </ion-grid>
 </ion-content>
