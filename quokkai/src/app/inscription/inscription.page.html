@@ -1,35 +1,39 @@
 <ion-content>
-  <ion-header class="accroche">
+  <ion-grid>
+
+    <ion-header class="accroche">
       <p>Quokkaï, le sourire dans votre poche !</p>
       <h2>Inscription</h2>
-  </ion-header>
+    </ion-header>
 
-  <ion-header class="informationsInscription">
-     <form>
+    <ion-header class="informationsInscription">
+      <form>
 
-      <p class="legende">E-mail</p>
-      <ion-input name="email" placeholder="E-mail" [(ngModel)]="registrationInfo.email"></ion-input>
-      
-      <ion-select name="region" placeholder="Choisissez votre région" [(ngModel)]="registrationInfo.region">
-          <ion-select-option *ngFor="let region of regions" value="{{region.name}}">{{region.name}}</ion-select-option>
-      </ion-select>
+        <p class="legende">E-mail</p>
+        <ion-input name="email" placeholder="E-mail" [(ngModel)]="registrationInfo.email"></ion-input>
+        
+        <ion-select name="region" placeholder="Choisissez votre région" [(ngModel)]="registrationInfo.region">
+            <ion-select-option *ngFor="let region of regions" value="{{region.name}}">{{region.name}}</ion-select-option>
+        </ion-select>
+  
+        <p class="legende">Mot de passe</p>
+        <ion-input name="password" placeholder="Mot de passe" [(ngModel)]="registrationInfo.password"  type="password"></ion-input>
+        <p class="legende">Confirmer votre mot de passe</p>
+        <ion-input name="confirm-password" placeholder="Confirmer mot de passe" [(ngModel)]="registrationInfo.confirmPassword" type="password"></ion-input>
+        <ion-label *ngIf="errorMessage" color="danger">Les informations données sont incorrectes</ion-label>
+  
+        <div class="connexion">
+          <ion-card-content>
+            <ion-tab-button (click)="redirect('')">Déjà membre ? Se connecter</ion-tab-button>
+          </ion-card-content>
+        </div>
+  
+        <div class="inscription">
+          <ion-button color="clear" (click)="inscription()">Bienvenue !</ion-button>
+        </div>
+  
+      </form>
+    </ion-header>
 
-      <p class="legende">Mot de passe</p>
-      <ion-input name="password" placeholder="Mot de passe" [(ngModel)]="registrationInfo.password"  type="password"></ion-input>
-      <p class="legende">Confirmer votre mot de passe</p>
-      <ion-input name="confirm-password" placeholder="Confirmer mot de passe" [(ngModel)]="registrationInfo.confirmPassword" type="password"></ion-input>
-      <ion-label *ngIf="errorMessage" color="danger">Les informations données sont incorrectes</ion-label>
-
-      <div class="connexion">
-        <ion-card-content>
-          <ion-tab-button (click)="redirect('')">Déjà membre ? Se connecter</ion-tab-button>
-        </ion-card-content>
-      </div>
-
-      <div class="inscription">
-        <ion-button color="clear" (click)="inscription()">Bienvenue !</ion-button>
-      </div>
-
-    </form>
-  </ion-header>
+  </ion-grid>
 </ion-content>

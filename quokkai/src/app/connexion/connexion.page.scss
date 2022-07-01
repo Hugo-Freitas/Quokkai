@@ -1,11 +1,10 @@
 ion-content {
     --overflow: hidden;
-    //background-image: url('../../assets/icon/test.png');
-    width: 375px;
-    height: 667px;
 }
 
-ion-header {
+ion-grid {
+    width: 100%;
+    height: 100%;
     background-image: url('../../assets/icon/fond.png');
 }
 

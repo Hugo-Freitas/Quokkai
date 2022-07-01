@@ -1,12 +1,10 @@
 ion-content {
     --overflow: hidden;
-    background-image: url('../../assets/icon/fond.png');
-    width: 375px;
-    height: 667px;
 }
 
-ion-header {
-    background-color: transparent;
+ion-grid {
+    width: 100%;
+    height: 100%;
     background-image: url('../../assets/icon/fond.png');
 }
 
@@ -14,7 +12,6 @@ ion-header {
     height: 33.3%;
     padding-top: 80px;
     text-align: center;
-    background-color: transparent;
     padding-left: 50px;
     padding-right: 50px;
 }
