@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Region } from '../region';
 import { RegionService } from '../region.service';
 import { Router } from '@angular/router';
+import { ProfilService } from '../services/profil.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-inscription',
@@ -18,7 +20,11 @@ export class InscriptionPage implements OnInit {
   errorMessage = false;
   regions: Region[] = [];
 
-  constructor(private regionService: RegionService, private router: Router) {}
+  constructor(
+    private regionService: RegionService, 
+    private router: Router,
+    private ProfilService: ProfilService
+    ) {}
 
   ngOnInit() {
     this.getRegions();
@@ -30,18 +36,31 @@ export class InscriptionPage implements OnInit {
       .subscribe((regions) => (this.regions = regions));
   }
 
-  register() {
-    /* if le login est bon alors on renvoie au profil */
-    if (true) {
-      this.errorMessage = false;
-      this.router.navigate(['']);
-    } else {
-      /* else message d'erreur */
-      this.errorMessage = true;
-    }
-  }
 
   redirect(route) {
     this.router.navigate([route]);
   }
+
+  inscription(): void {
+    if ((this.registrationInfo.email != '') && 
+    (this.registrationInfo.region != '') && 
+    (this.registrationInfo.password != '') && 
+    (this.registrationInfo.confirmPassword != '')){
+      if (this.registrationInfo.password == this.registrationInfo.confirmPassword){
+
+        this.ProfilService.inscription(this.registrationInfo).subscribe((res)=>{
+          console.log(res,'res==>');
+        })
+
+        this.router.navigate(['']);
+
+      } else {
+        this.errorMessage = true ;
+      }
+    }
+    else {
+      this.errorMessage = true ;
+    }
+  }
+
 }

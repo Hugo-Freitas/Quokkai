@@ -13,7 +13,7 @@
           <ion-input name="password" class="text-input" placeholder="Mot de passe" [(ngModel)]="loginInfo.password" type="password"></ion-input>
         </div> 
 
-        <ion-label *ngIf="errorMessage" color="danger">Les informations données sont incorrectes</ion-label>
+        <ion-label *ngIf="errorMessage" color="danger">{{message}}</ion-label>
         
         <ion-tab-button class="mdpOublie" (click)="redirect('/mdp-oublie')">Mot de passe oublié ?</ion-tab-button>
         

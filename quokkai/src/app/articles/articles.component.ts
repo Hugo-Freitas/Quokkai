@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Article } from '../article';
+import { Clipboard, WriteOptions } from '@capacitor/clipboard';
 
 @Component({
   selector: 'app-articles',
@@ -14,4 +15,12 @@ export class ArticlesComponent implements OnInit {
 
   ngOnInit() {}
 
+  copyLink() {
+    const link: WriteOptions = {
+      // eslint-disable-next-line id-blacklist
+      string: this.article.link,
+    };
+    Clipboard.write(link);
+    alert('Lien copié !');
+  }
 }
