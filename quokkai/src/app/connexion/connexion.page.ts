@@ -37,7 +37,6 @@ export class ConnexionPage implements OnInit {
           this.errorMessage = true;
         } else if (res.status == 200){
           this.errorMessage = true;
-          // this.router.navigate('');
           this.message = 'Vous etes connecté !' ;
         } else {
           console.log(res.status)
