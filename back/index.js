@@ -3,6 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const events = require('./events');
+const nodemailer = require('nodemailer');
 
 
 const connection = mysql.createConnection({
@@ -87,8 +88,6 @@ app.post('/connexion',(req,res) => {
   connection.query(qr,(err,result) => {
     if (err){console.log(err);}
 
-    console.log(result)
-
     if (Object.keys(result).length === 0){
       res.send({
         message:'User not found',
@@ -104,6 +103,84 @@ app.post('/connexion',(req,res) => {
   })
 })
 
+function sendEmail(receiver, subject, text) {
+  // Create transporter
+  let transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 587,
+    service: 'gmail',
+    auth: {
+      user: 'quokkai.service@gmail.com',
+      pass: 'zhqhcmtffcyphriq',
+    },
+  });
+  // Create options
+  let mailOptions = {
+    from: 'quokkai.service@gmail.com',
+    to: receiver,
+    subject: subject,
+    text: text,
+  };
+  // transporter sends email
+  transporter.sendMail(mailOptions, function (err) {
+    if (err) {
+      console.log('Error occurs', err);
+      return;
+    }
+  });
+}
 
+function generatePassword() {
+  // random password generator
+  let pass = '';
+  const str =
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$';
+  const length = 10 + Math.floor(Math.random() * 5);
+  for (i = 1; i <= length; i++) {
+    const char = Math.floor(Math.random() * str.length + 1);
+
+    pass += str.charAt(char);
+  }
+  return pass;
+}
+
+
+app.put('/mdpOublie', (req, res) => {
+  const email = req.body.email;
+
+  let qr = `SELECT * FROM user where mail='${email}'`;
+
+  connection.query(qr, (err, result) => {
+    if (err){console.log(err);}
+    
+    if (Object.keys(result).length === 0){
+      res.send({
+        message:'User not found',
+        status: 404
+      })
+    } else {
+      const newPassword = generatePassword();
+      qr = `UPDATE user SET password='${newPassword}' WHERE mail='${email}'`;
+
+      connection.query(qr, (err, result) => {
+        if (err) {
+          console.log(err);
+        }
+      });
+
+      const text =
+        `Bonjour Mme/M,\n\n` +
+        `Suite à votre demande sur l'onglet mot de passe oublié, nous avons généré ce nouveau mot de passe pour votre compte QuokkaÏ : ${newPassword}\n\n` +
+        "Sincèrement, toute l'équipe QuokkaÏ.";
+
+      sendEmail(email, 'Quokkaï - Nouveau mot de passe', text);
+
+      res.send({
+        message:'User found',
+        status: 200
+      })
+    }
+  })
+});
 
 module.exports = connection;
