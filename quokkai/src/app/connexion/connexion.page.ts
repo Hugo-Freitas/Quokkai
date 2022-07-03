@@ -36,11 +36,9 @@ export class ConnexionPage implements OnInit {
           this.message = 'Données incorrectes.' ;
           this.errorMessage = true;
         } else if (res.status == 200){
-          //this.errorMessage = true;
-          //this.message = 'Vous etes connecté !' ;
-
-          //TODO : au lieu de hard script la region, adapter la région à l'utilisateur
-          this.router.navigate(['/quokkai/actualites/Bretagne']);
+          this.router.navigate(['/quokkai/actualites/' + res.region]);
+          this.errorMessage = true;
+          this.message = 'Vous etes connecté !' ;
         } else {
           console.log(res.status)
         } 

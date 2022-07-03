@@ -87,7 +87,7 @@ app.post('/connexion',(req,res) => {
 
   connection.query(qr,(err,result) => {
     if (err){console.log(err);}
-
+    
     if (Object.keys(result).length === 0){
       res.send({
         message:'User not found',
@@ -95,9 +95,10 @@ app.post('/connexion',(req,res) => {
       })
     } else {
       res.send({
-        message:'User found',
-        status: 200
-      })
+        region: result[0].region,
+        message: 'User found',
+        status: 200,
+      });
     }
     
   })
