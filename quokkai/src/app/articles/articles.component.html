@@ -13,7 +13,8 @@
     <div class="date">{{ article.date.getDay() }}/{{ article.date.getMonth() }}/{{ article.date.getFullYear() }}</div>
     <ion-icon class="share" size="large" name="share-outline" (click)="copyLink()"></ion-icon>
     <ion-icon class="heart" size="large" name="heart-outline" *ngIf="!heartClicked" (click)="heartClicked = !heartClicked"></ion-icon>
-    <ion-icon class="heart" size="large" name="heart-sharp" *ngIf="heartClicked" (click)="heartClicked = !heartClicked"></ion-icon>
+    <!--<ion-icon class="heart" size="large" name="heart-sharp" *ngIf="heartClicked" (click)="heartClicked = !heartClicked"></ion-icon>-->
+    <ion-img class="heart" src='../../assets/icon/quokkai_happy_fond.png' *ngIf="heartClicked" (click)="heartClicked = !heartClicked"></ion-img>
   </ion-footer>
 </ion-card>
 
