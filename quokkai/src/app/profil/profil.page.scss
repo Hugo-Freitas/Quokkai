@@ -3,3 +3,27 @@ ion-toolbar {
     border-bottom: solid #000080;
     color:#000080;
 }
+
+ion-grid {
+    height: 100%;
+    background-image: url('../../assets/icon/fond_total.png');
+}
+
+ion-content {
+    --overflow: hidden;
+}
+
+ion-button {
+    border-radius: 25px;
+    color: #000080;
+    width: 150px;  
+    background-color: white;
+    box-shadow: 1px 1px 1px 1px white;
+    font-size: 18px;
+}
+
+.btn {
+    padding-left: auto;
+    padding-right: auto;
+    text-align: center;
+}
