@@ -24,13 +24,4 @@ export class ProfilPage implements OnInit {
     /* Charger les infos du profil */
     /* Verif si le gars est bien co */
   }
-
-  test(): void {
-    console.log("test")
-    this.service.article()/*.subscribe((response) => {
-      console.log('Response from the API is ', response)
-    }, (error) => {
-      console.log("Error is ", error);
-    })*/
-  }
 }

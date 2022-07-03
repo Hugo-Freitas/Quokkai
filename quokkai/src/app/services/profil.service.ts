@@ -17,11 +17,7 @@ export class ProfilService {
   mdpOublie(data: any): Observable<any> {
     return this.http.put(`http://localhost:8080/mdpOublie`, data);
   }
-  article() {
-    return this.http
-      .get('http://localhost:8080/article')
-      .subscribe((response) => {
-        console.log(response);
-      });
+  articles(data: any): Observable<any> {
+    return this.http.post('http://localhost:8080/articles', data)
   }
 }

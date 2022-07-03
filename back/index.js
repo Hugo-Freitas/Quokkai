@@ -46,16 +46,22 @@ connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
   console.log('The solution is: ', rows[0].solution);
 });*/
 
-app.route('/article/')
-  .get(function(req, res, next) {
-    connection.query(
-      "SELECT * FROM `article`",
-      function(error, results, fields) {
-        if (error) throw error;
-        res.json(results);
-      }
-    );
+app.post('/articles' , (req, res) => {
+  const regionId = req.body.id;
+  // loc a changé
+  const qr = `SELECT * FROM article WHERE Loc='${regionId}'`;
+  console.log(qr);
+  connection.query(qr, (err, result) => {
+    if (err) {
+      console.log(err);
+    }
+    res.send({
+      articles: result,
+      status: 204,
+    });
   });
+
+});
 
 app.post('/inscription',(req,res) => {
 
@@ -65,7 +71,7 @@ app.post('/inscription',(req,res) => {
 
   let qr = `INSERT INTO user(mail, password, region) VALUES ('${Email}', '${Password}', '${Region}')` ;
 
-  connection.query(qr,(err,result) => {
+  connection.query(qr, (err, result) => {
     if (err){console.log(err);}
 
     res.send({
