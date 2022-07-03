@@ -1,0 +1,46 @@
+.date {
+    display: inline-block;
+    margin-left: 20px;
+    margin-top: 6px;
+    font-size: 18px;
+    color:#000080;
+}
+
+.heart {
+    display: inline-block;
+    float: right;
+    margin-right: 10px;
+    margin-bottom: 15px;
+    color: #000080;
+}
+
+.share {
+    display: inline-block;
+    float: right;
+    margin-right: 20px;
+    margin-bottom: 15px;  
+    color: #000080;
+}
+
+
+a:link { text-decoration: none; }
+
+
+a:visited { text-decoration: none; }
+
+
+a:hover { text-decoration: none; }
+
+
+a:active { text-decoration: none; }
+
+ion-card-title {
+    text-align: center;
+    font-size: 20px;
+    color:#000080;
+}
+
+ion-card-content {
+    text-align: justify;
+    //color: black;
+}
