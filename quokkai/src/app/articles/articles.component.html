@@ -1,5 +1,5 @@
 <ion-card>
-  <a href="{{article.link}}" target="_blank">
+  <a href="{{ article.link }}" target="_blank">
     <ion-card-header>
       <!--<ion-card-subtitle>{{ article.region }}</ion-card-subtitle>-->
       <ion-card-title>{{ article.title }}</ion-card-title>
@@ -23,7 +23,7 @@
   <ion-content fullscreen>
     <a href="{{article.link}}" target="_blank">
       <ion-card>
-        <img src="https://sain-et-naturel.ouest-france.fr/wp-content/uploads/2022/04/adorable-quokka.jpg" />
+        <img src="{{ article.image }}" />
         <ion-card-header>
           <ion-card-title>{{ article.title }}</ion-card-title>
         </ion-card-header>

@@ -41,16 +41,11 @@ connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
   console.log('The solution is: ', rows[0].solution);
 });
 
-/*connection.query('SELECT * FROM article AS solution', function(err, rows, fields) {
-  if (err) throw err;
-  console.log('The solution is: ', rows[0].solution);
-});*/
-
 app.post('/articles' , (req, res) => {
   const regionId = req.body.id;
   // loc a changé
-  const qr = `SELECT * FROM article WHERE Loc='${regionId}'`;
-  console.log(qr);
+  const qr = `SELECT * FROM article WHERE departement='${regionId}' and mood >= 50`;
+  
   connection.query(qr, (err, result) => {
     if (err) {
       console.log(err);
