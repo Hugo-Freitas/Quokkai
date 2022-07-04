@@ -41,7 +41,9 @@ export class ActualitesPage implements OnInit {
           content: article.Resume_,
           region: this.region.name,
           id: count,
-          image: article.image,
+          image:
+            'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg',
+          // image: article.image,  
           source: article.Source_,
         });
       })
