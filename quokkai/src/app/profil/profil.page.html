@@ -7,14 +7,18 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-grid>
 
-
-  <!--Information du profil -->
+      <!--Information du profil -->
   <ion-header>
-     <ion-button (click)="disconnect()">Déconnexion</ion-button>
-     <ion-label>Information du profil</ion-label>
-     <ion-input name="email" placeholder="E-mail" [(ngModel)]="userInfo.email" readonly></ion-input>
-     <ion-input name="region" placeholder="Région" [(ngModel)]="userInfo.region" readonly></ion-input>
-  </ion-header>
+    <!--<ion-label>Information du profil</ion-label>-->
+    <ion-input name="email" placeholder="E-mail" [(ngModel)]="userInfo.email" readonly></ion-input>
+    <ion-input name="region" placeholder="Région" [(ngModel)]="userInfo.region" readonly></ion-input>
+ </ion-header>
+ 
+  <div class="btn">
+    <ion-button color="clear" (click)="disconnect()">Déconnexion</ion-button>
+  </div>
 
+  </ion-grid>
 </ion-content>

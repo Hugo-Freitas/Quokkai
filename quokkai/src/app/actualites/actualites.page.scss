@@ -7,9 +7,10 @@ ion-title {
     color: #000080;
 }
 
+/*
 app-articles {
     background-image: url('../../assets/icon/test.png');
-    //background: transparent;
+    background: transparent;
     box-shadow: 0;
 }
 
@@ -20,4 +21,19 @@ ion-content {
 
 ion-item {
     background: transparent;
+    margin-left: -6%;
+}
+*/
+
+
+ion-content {
+    width: calc(100% + 10px);
+}
+
+ion-item {
+    margin-left: -6%;
+}
+
+ion-grid {
+    background-image: url('../../assets/icon/fond_total.png');
 }
