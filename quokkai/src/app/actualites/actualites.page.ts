@@ -44,6 +44,9 @@ export class ActualitesPage implements OnInit {
           source: article.Source_,
         });
       })
+      this.articles.sort((article1, article2) => {
+        return article2.date.getTime() - article1.date.getTime();
+      })
     });
   }
 
