@@ -5,4 +5,6 @@ export interface Article {
   region: string;
   id: number;
   date: Date;
+  image: String;
+  source: String;
 }
