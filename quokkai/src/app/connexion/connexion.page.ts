@@ -37,8 +37,7 @@ export class ConnexionPage implements OnInit {
           this.errorMessage = true;
         } else if (res.status == 200){
           this.router.navigate(['/quokkai/actualites/' + res.region]);
-          this.errorMessage = true;
-          this.message = 'Vous etes connecté !' ;
+          this.errorMessage = false;
         } else {
           console.log(res.status)
         } 

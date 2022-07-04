@@ -93,11 +93,16 @@ export class InscriptionPage implements OnInit {
           if (password.length < 2){this.message = 'Votre mot de passe doit faire minimum 8 caractères'; this.errorMessage = true ;}
           else if (!/\d/.test(password)){this.message = 'Votre mot de passe doit contenir au moins un chiffre.'; this.errorMessage = true ;}
           else {
+
+
             this.ProfilService.inscription(this.registrationInfo).subscribe((res)=>{
               console.log(res,'res==>');
             })
-            this.message = 'Inscription effectuée !'; 
-            this.errorMessage = true ;
+
+            this.router.navigate(['/quokkai/actualites/' + this.registrationInfo.region]);
+
+            this.errorMessage = false ;
+
           }
         }
       }
