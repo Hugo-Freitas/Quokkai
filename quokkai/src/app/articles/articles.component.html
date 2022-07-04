@@ -1,13 +1,12 @@
-<ion-app>
-  <ion-content fullscreen>
+
+<ion-grid>
+  <ion-card>
     <a href="{{ article.link }}" target="_blank">
-      <ion-card>
-        <img src="{{ article.image }}" />
-        <ion-card-header>
-          <ion-card-title>{{ article.title }}</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>{{ article.content }}</ion-card-content>
-      </ion-card>
+      <img src="{{ article.image }}" />
+      <ion-card-header>
+        <ion-card-title>{{ article.title }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>{{ article.content }}</ion-card-content>
     </a>
     <ion-footer>
       <div class="date">{{ article.date.getDay() }}/{{ article.date.getMonth() }}/{{ article.date.getFullYear() }}</div>
@@ -15,8 +14,10 @@
       <ion-icon class="heart" size="large" name="heart-outline" *ngIf="!heartClicked" (click)="heartClicked = !heartClicked"></ion-icon>
       <ion-img class="heart" src='../../assets/icon/quokkai_happy_fond.png' *ngIf="heartClicked" (click)="heartClicked = !heartClicked"></ion-img>
     </ion-footer> 
-  </ion-content>
-</ion-app>
+  </ion-card>
+</ion-grid>
+
+
 
 <!--
 <ion-card>

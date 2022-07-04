@@ -7,31 +7,14 @@ ion-title {
     color: #000080;
 }
 
-/*
-app-articles {
-    background-image: url('../../assets/icon/test.png');
-    background: transparent;
-    box-shadow: 0;
-}
-
 ion-content {
     width: calc(100% + 10px);
-    background-image: url('../../assets/icon/test.png')
-}
-
-ion-item {
-    background: transparent;
-    margin-left: -6%;
-}
-*/
-
-
-ion-content {
-    width: calc(100% + 10px);
+    height: 100%;
 }
 
 ion-item {
     margin-left: -6%;
+    height: 100%;
 }
 
 ion-grid {
