@@ -32,18 +32,16 @@ export class ActualitesPage implements OnInit {
       let count = 0;
       res.articles.forEach((article) => {
         count++;
-        let date = article.Date_.split(' ');
+        let date = article.Date_.split('/');
         date[1] = this.getMonth(date[1]);
         this.articles.push({
           title: article.titre,
           date: new Date(date[2], date[1], date[0]),
-          link: 'https://' + article.Lien,
+          link: article.Lien,
           content: article.Resume_,
           region: this.region.name,
           id: count,
-          image:
-            'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg',
-          // image: article.image,  
+          image: article.image,  
           source: article.Source_,
         });
       })
