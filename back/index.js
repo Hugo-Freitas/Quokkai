@@ -95,16 +95,30 @@ app.post('/inscription',(req,res) => {
   const Password = req.body.password;
   const Region = req.body.region;
 
-  const qr = `INSERT INTO user(mail, password, region) VALUES ('${Email}', '${Password}', '${Region}')`; ;
+  const qr1 = `SELECT * FROM user where mail='${Email}'`; ;
 
-  connection.query(qr, (err, result) => {
+  connection.query(qr1,(err,result) => {
     if (err){console.log(err);}
+    
+    if (Object.keys(result).length === 0){
+      
+      const qr2 = `INSERT INTO user(mail, password, region) VALUES ('${Email}', '${Password}', '${Region}')`; ;
 
-    res.send({
-      message:'data inserted'
-    })
+      connection.query(qr2, (err, result) => {
+        if (err){console.log(err);}
+        res.send({
+          message:'data inserted',
+          status: 200
+        })
+      })
+
+    } else {
+      res.send({
+        message: 'User already exists',
+        status: 409
+      });
+    }
   })
-
 })
 
 app.post('/connexion',(req,res) => {

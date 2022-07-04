@@ -43,6 +43,7 @@ export class InscriptionPage implements OnInit {
   }
 
   inscription(): void {
+
     let mail = false
     let region = false
     let pwd = false
@@ -94,14 +95,19 @@ export class InscriptionPage implements OnInit {
           else if (!/\d/.test(password)){this.message = 'Votre mot de passe doit contenir au moins un chiffre.'; this.errorMessage = true ;}
           else {
             this.ProfilService.inscription(this.registrationInfo).subscribe((res)=>{
-              console.log(res,'res==>');
+              if (res.status == 409) {
+                this.errorMessage = true;
+                this.message = 'Un compte avec cet email existe déjà !';
+              } else if (res.status == 200) {
+                this.errorMessage = false;
+                this.registrationInfo.email = '';
+                this.registrationInfo.password = '';
+                this.registrationInfo.confirmPassword = '';
+                this.registrationInfo.region = '';
+                alert("Inscription effectuée ! Vous allez être redirigé vers la page de connexion. (à changer en pop up)")
+                this.router.navigate(['/']);
+              }
             })
-            this.errorMessage = false;
-            this.registrationInfo.email = '';
-            this.registrationInfo.password = '';
-            this.registrationInfo.confirmPassword = '';
-            this.registrationInfo.region = '';
-            this.router.navigate(['/quokkai/actualites/' + this.registrationInfo.region]);
           }
         }
       }
