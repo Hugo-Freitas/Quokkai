@@ -36,9 +36,10 @@ export class ConnexionPage implements OnInit {
           this.message = 'Données incorrectes.' ;
           this.errorMessage = true;
         } else if (res.status == 200){
+          this.loginInfo.email = '';
+          this.loginInfo.password = '';
+          this.errorMessage = false;
           this.router.navigate(['/quokkai/actualites/' + res.region]);
-          this.errorMessage = true;
-          this.message = 'Vous etes connecté !' ;
         } else {
           console.log(res.status)
         } 
