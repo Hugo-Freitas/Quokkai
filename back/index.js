@@ -44,7 +44,8 @@ connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
 app.post('/articles' , (req, res) => {
   const regionId = req.body.id;
   // loc a changé
-  const qr = `SELECT * FROM article WHERE departement='${regionId}' and mood >= 50`;
+  const qr = `SELECT * FROM article`;
+  //const qr = `SELECT * FROM article WHERE departement='${regionId}' and mood >= 0.5`;
   
   connection.query(qr, (err, result) => {
     if (err) {
