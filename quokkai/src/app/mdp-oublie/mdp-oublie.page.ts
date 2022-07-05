@@ -21,14 +21,8 @@ export class MdpOubliePage implements OnInit {
       email: this.email
     }
     this.ProfilService.mdpOublie(info).subscribe((res) => {
-      console.log(res);
-      if (res.status === 200) {
-        this.validationMessage = true;
-        this.errorMessage = false;
-      } else if (res.status === 404) {
-        this.errorMessage = true;
-        this.validationMessage = false;
-      }
+      this.validationMessage = res.status === 204;
+      this.errorMessage = res.status === 401;
     });
   }
 
