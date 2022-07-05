@@ -17,7 +17,6 @@ export class ArticlesComponent implements OnInit {
 
   copyLink() {
     const link: WriteOptions = {
-      // eslint-disable-next-line id-blacklist
       string: this.article.link,
     };
     Clipboard.write(link);

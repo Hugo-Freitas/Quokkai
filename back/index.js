@@ -5,7 +5,6 @@ const mysql = require('mysql');
 const events = require('./events');
 const nodemailer = require('nodemailer');
 
-
 const connection = mysql.createConnection({
   host     : '34.155.38.235',
   user     : 'root',
@@ -28,17 +27,8 @@ const app = express()
   .use(bodyParser.json())
   .use(events(connection));
 
-app.get('', (req, res) => {
-  res.send("Hello World !")
-})
-
 app.listen(port, () => {
   console.log(`Express server listening on port ${port}`);
-});
-
-connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
-  if (err) throw err;
-  console.log('The solution is: ', rows[0].solution);
 });
 
 function getDepartement(region) {
@@ -72,21 +62,19 @@ function getDepartement(region) {
 }
 
 app.post('/articles' , (req, res) => {
+  
   const regionId = req.body.id;
   
-  const qr =
-    `SELECT * FROM article ` + getDepartement(regionId) + ` and mood >= 50`;
+  const qr = `SELECT * FROM article ` + getDepartement(regionId) + ` and mood >= 50`;
   
   connection.query(qr, (err, result) => {
-    if (err) {
-      console.log(err);
-    }
+    if (err) {console.log(err);}
+
     res.send({
       articles: result,
       status: 204,
     });
   });
-
 });
 
 app.post('/inscription',(req,res) => {
@@ -95,23 +83,21 @@ app.post('/inscription',(req,res) => {
   const Password = req.body.password;
   const Region = req.body.region;
 
-  const qr1 = `SELECT * FROM user where mail='${Email}'`; ;
+  let qr = `SELECT * FROM user where mail='${Email}'`; ;
 
-  connection.query(qr1,(err,result) => {
+  connection.query(qr,(err,result) => {
     if (err){console.log(err);}
     
     if (Object.keys(result).length === 0){
-      
-      const qr2 = `INSERT INTO user(mail, password, region) VALUES ('${Email}', '${Password}', '${Region}')`; ;
+      qr = `INSERT INTO user(mail, password, region) VALUES ('${Email}', '${Password}', '${Region}')`; ;
 
-      connection.query(qr2, (err, result) => {
+      connection.query(qr, (err, result) => {
         if (err){console.log(err);}
         res.send({
           message:'data inserted',
           status: 200
         })
       })
-
     } else {
       res.send({
         message: 'User already exists',
@@ -174,7 +160,7 @@ function sendEmail(receiver, subject, text) {
 }
 
 function generatePassword() {
-  // random password generator
+  
   let pass = '';
   const str =
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$';
@@ -187,6 +173,7 @@ function generatePassword() {
 }
 
 app.put('/mdpOublie', (req, res) => {
+
   const email = req.body.email;
 
   let qr = `SELECT * FROM user where mail='${email}'`;
@@ -196,8 +183,7 @@ app.put('/mdpOublie', (req, res) => {
     
     if (Object.keys(result).length === 0){
       res.send({
-        message:'User not found',
-        status: 404
+        status: 401
       })
     } else {
       const newPassword = generatePassword();
@@ -217,8 +203,7 @@ app.put('/mdpOublie', (req, res) => {
       sendEmail(email, 'Quokkaï - Nouveau mot de passe', text);
 
       res.send({
-        message:'User found',
-        status: 200
+        status: 204
       })
     }
   })

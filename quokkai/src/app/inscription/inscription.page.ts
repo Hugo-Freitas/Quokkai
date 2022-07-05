@@ -37,81 +37,90 @@ export class InscriptionPage implements OnInit {
       .subscribe((regions) => (this.regions = regions));
   }
 
-
   redirect(route) {
     this.router.navigate([route]);
   }
 
+  checkEmailFormat(): boolean {
+    const email1 = this.registrationInfo.email.split('@');
+    const email2 = this.registrationInfo.email.split('.');
+
+    if (
+      email1.length <= 1 ||
+      email2.length <= 1 ||
+      this.registrationInfo.email.includes('..') ||
+      this.registrationInfo.email.includes('.@')
+    ) {
+      this.message = 'Veuillez rentrer une adresse mail valide';
+      return true;
+    }
+    return false;
+  }
+
+  checkPasswordFormat(): boolean {
+    if (this.registrationInfo.password != this.registrationInfo.confirmPassword) {
+      this.message = 'Votre mot de passe ne correspond pas.';
+      return true;
+    } else {
+      if (this.registrationInfo.password.length < 2) {
+        this.message = 'Votre mot de passe doit faire minimum 8 caractères';
+        return true;
+      } else if (!/\d/.test(this.registrationInfo.password)) {
+        this.message =
+          'Votre mot de passe doit contenir au moins un chiffre.';
+        return true;
+      }
+    }
+    return false;
+  }
+
   inscription(): void {
 
-    let mail = false
-    let region = false
-    let pwd = false
-    let pwdconf = false
+    this.errorMessage =
+      this.registrationInfo.email === '' ||
+      this.registrationInfo.region === '' ||
+      this.registrationInfo.password === '' ||
+      this.registrationInfo.confirmPassword === '';
 
-    if (this.registrationInfo.email == ''){ mail = true }
-    if (this.registrationInfo.region == ''){ region = true }
-    if (this.registrationInfo.password == ''){ pwd = true }
-    if (this.registrationInfo.confirmPassword == ''){ pwdconf = true }
+    let count = 0;
 
-    let count = 0
+    if (this.registrationInfo.email === ''){ count++; }
+    if (this.registrationInfo.region === ''){ count++; }
+    if (this.registrationInfo.password === ''){ count++; }
+    if (this.registrationInfo.confirmPassword === ''){ count++; }
 
-    if (mail==true){count++}
-    if (region==true){count++}
-    if (pwd==true){count++}
-    if (pwdconf==true){count++}
-
-    if (count > 1){this.message = 'Veuillez remplir tous les champs.'; this.errorMessage = true ;}
-
-    if (count == 1){
-      if (mail == false){ this.message = 'Veuillez rentrer votre email.'; this.errorMessage = true ;}
-      if (region == false){ this.message = 'Veuillez rentrer votre region.'; this.errorMessage = true ;}
-      if (pwd == false){ this.message = 'Veuillez créer votre mot de passe.'; this.errorMessage = true ;}
-      if (pwdconf == false){ this.message = 'Veuillez confirmer votre mot de passe.'; this.errorMessage = true ;}
-    }
-
-    if (count == 0){
-      let valid = true ;
-      let email = this.registrationInfo.email
-      let email1 = email.split('@') ;
-      let email2 = email.split('.') ;
-      
-      if ((email1.length <= 1) || (email2.length <= 1)){
-        valid = false ;
+    if (this.errorMessage) {
+      if (count > 1) {
+        this.message = 'Veuillez remplir tous les champs.';
+      } else if (count === 1) {
+        if (this.registrationInfo.email === '') { this.message = 'Veuillez rentrer votre email.'; } 
+        else if (this.registrationInfo.region === '') { this.message = 'Veuillez rentrer votre region.'; } 
+        else if (this.registrationInfo.password === '') { this.message = 'Veuillez créer votre mot de passe.'; } 
+        else if (this.registrationInfo.confirmPassword === '') { this.message = 'Veuillez confirmer votre mot de passe.'; }
       }
-
-      if ((email.includes('..')) || (email.includes('.@'))){
-        valid = false
-      }
-
-      if (valid==false){ this.message = 'Veuillez rentrer une adresse mail valide'; this.errorMessage = true ;}
-      else {
-        let password = this.registrationInfo.password
-        if (password != this.registrationInfo.confirmPassword){
-          this.message = 'Votre mot de passe ne correspond pas.'; 
-          this.errorMessage = true ;
-        } else {
-          if (password.length < 2){this.message = 'Votre mot de passe doit faire minimum 8 caractères'; this.errorMessage = true ;}
-          else if (!/\d/.test(password)){this.message = 'Votre mot de passe doit contenir au moins un chiffre.'; this.errorMessage = true ;}
-          else {
-            this.ProfilService.inscription(this.registrationInfo).subscribe((res)=>{
-              if (res.status == 409) {
+    } else if (!this.errorMessage) {
+        this.errorMessage = this.checkEmailFormat() || this.checkPasswordFormat();
+        if (!this.errorMessage) {
+          this.ProfilService.inscription(this.registrationInfo).subscribe(
+            (res) => {
+              if (res.status === 409) {
                 this.errorMessage = true;
                 this.message = 'Un compte avec cet email existe déjà !';
-              } else if (res.status == 200) {
+              } else if (res.status === 200) {
                 this.errorMessage = false;
                 this.registrationInfo.email = '';
                 this.registrationInfo.password = '';
                 this.registrationInfo.confirmPassword = '';
                 this.registrationInfo.region = '';
-                alert("Inscription effectuée ! Vous allez être redirigé vers la page de connexion. (à changer en pop up)")
+                alert(
+                  'Inscription effectuée ! Vous allez être redirigé vers la page de connexion.'
+                );
                 this.router.navigate(['/']);
               }
-            })
-          }
+            }
+          );
         }
       }
-    }
   }
 }
 

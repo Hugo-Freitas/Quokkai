@@ -33,6 +33,7 @@ export class ActualitesPage implements OnInit {
       res.articles.forEach((article) => {
         count++;
         let date = article.Date_.split('/');
+
         this.articles.push({
           title: article.titre,
           date: new Date(date[2], date[1], date[0]),
@@ -40,13 +41,14 @@ export class ActualitesPage implements OnInit {
           content: article.Resume_,
           region: this.region.name,
           id: count,
-          image: article.image,
+          image: article.image, 
           source: article.Source_,
         });
       })
+      
       this.articles.sort((article1, article2) => {
         return article2.date.getTime() - article1.date.getTime();
-      })
+      });
     });
   }
 
