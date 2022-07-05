@@ -84,14 +84,14 @@ export class InscriptionPage implements OnInit {
         valid = false
       }
 
-      if (valid==false){ this.message = 'Veuillez rentrer une adresse mail valide'; this.errorMessage = true ;}
+      if (valid==false){ this.message = 'Veuillez rentrer une adresse mail valide.'; this.errorMessage = true ;}
       else {
         let password = this.registrationInfo.password
         if (password != this.registrationInfo.confirmPassword){
           this.message = 'Votre mot de passe ne correspond pas.'; 
           this.errorMessage = true ;
         } else {
-          if (password.length < 2){this.message = 'Votre mot de passe doit faire minimum 8 caractères'; this.errorMessage = true ;}
+          if (password.length < 2){this.message = 'Votre mot de passe doit faire minimum 8 caractères.'; this.errorMessage = true ;}
           else if (!/\d/.test(password)){this.message = 'Votre mot de passe doit contenir au moins un chiffre.'; this.errorMessage = true ;}
           else {
             this.ProfilService.inscription(this.registrationInfo).subscribe((res)=>{
@@ -104,7 +104,7 @@ export class InscriptionPage implements OnInit {
                 this.registrationInfo.password = '';
                 this.registrationInfo.confirmPassword = '';
                 this.registrationInfo.region = '';
-                alert("Inscription effectuée ! Vous allez être redirigé vers la page de connexion. (à changer en pop up)")
+                alert("Inscription effectuée ! Vous allez être redirigé vers la page de connexion.");
                 this.router.navigate(['/']);
               }
             })

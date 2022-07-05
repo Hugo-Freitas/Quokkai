@@ -19,7 +19,7 @@
         <p class="legende">Mot de passe</p>
         <ion-input name="password" placeholder="Mot de passe" [(ngModel)]="registrationInfo.password"  type="password"></ion-input>
         <p class="legende">Confirmer votre mot de passe</p>
-        <ion-input name="confirm-password" placeholder="Confirmer mot de passe" [(ngModel)]="registrationInfo.confirmPassword" type="password"></ion-input>
+        <ion-input class="confirmPasssword" name="confirm-password" placeholder="Confirmer mot de passe" [(ngModel)]="registrationInfo.confirmPassword" type="password"></ion-input>
         <ion-label *ngIf="errorMessage" color="danger" class="errorMessage">{{message}}</ion-label>
 
         <div class="connexion">
