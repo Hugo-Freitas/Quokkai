@@ -4,6 +4,8 @@ import { RegionService } from '../region.service';
 import { Router } from '@angular/router';
 import { ProfilService } from '../services/profil.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ModalController } from '@ionic/angular';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-inscription',
@@ -24,11 +26,27 @@ export class InscriptionPage implements OnInit {
   constructor(
     private regionService: RegionService, 
     private router: Router,
-    private ProfilService: ProfilService
+    private ProfilService: ProfilService,
+    private modalCtrl: ModalController
     ) {}
 
   ngOnInit() {
     this.getRegions();
+  }
+
+  async _openModal(title, content) {
+    const modal = await this.modalCtrl.create({
+      component: ModalComponent,
+      backdropDismiss: false,
+      componentProps: {
+        "title": title,
+        "content": content,
+      },
+    });
+    modal.onDidDismiss().then(() => {
+      this.router.navigate(['/']);
+    })
+    return await modal.present();
   }
 
   getRegions(): void {
@@ -112,10 +130,10 @@ export class InscriptionPage implements OnInit {
                 this.registrationInfo.password = '';
                 this.registrationInfo.confirmPassword = '';
                 this.registrationInfo.region = '';
-                alert(
-                  'Inscription effectuée ! Vous allez être redirigé vers la page de connexion.'
+                this._openModal(
+                  'Inscription effectuée !',
+                  'Vous allez être redirigé vers la page de connexion.'
                 );
-                this.router.navigate(['/']);
               }
             }
           );

@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { InscriptionPageRoutingModule } from './inscription-routing.module';
 
 import { InscriptionPage } from './inscription.page';
+import { ModalComponent } from '../modal/modal.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { InscriptionPage } from './inscription.page';
     IonicModule,
     InscriptionPageRoutingModule
   ],
-  declarations: [InscriptionPage]
+  declarations: [InscriptionPage, ModalComponent]
 })
 export class InscriptionPageModule {}
