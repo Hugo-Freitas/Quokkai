@@ -1,9 +1,20 @@
-.modal {
-    width: 80%;
-    --border-radius: 10px;
-    --height: 50%;
+ion-content {
+    --overflow: hidden;
+    text-align: center;
 }
 
+ion-grid {
+    background-image: url('../../assets/icon/fond_total.png');
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    flex-direction: column;
+    display: flex;
+}
+
+ion-title {
+    color:#000080;
+}
 
 ion-button {
     border-radius: 25px;
@@ -14,4 +25,16 @@ ion-button {
     font-size: 18px;
     margin-left: auto;
     margin-right: auto;
+    justify-content: flex-end;
+    display: flex;
+    margin-bottom: 25px;
+}
+
+p {
+    color: #000080;
+}
+
+ion-toolbar {
+    --background: white;
+    border-bottom: solid #000080;
 }

@@ -6,10 +6,15 @@
   </ion-header>
 
   <ion-content>
-    <p>{{ content }}</p>
-    <ion-button color="clear" (click)="_dismiss()">
-      Fermer
-    </ion-button>
+    <ion-grid>
+      <p>{{ content }}</p>
+      <div class="btn-holder">
+        <ion-button color="clear" (click)="_dismiss()">
+          Fermer
+        </ion-button>
+      </div>
+    </ion-grid>
+
   </ion-content>
 
 
