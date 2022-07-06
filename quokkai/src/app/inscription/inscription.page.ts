@@ -12,6 +12,7 @@ import { ModalComponent } from '../modal/modal.component';
   templateUrl: './inscription.page.html',
   styleUrls: ['./inscription.page.scss'],
 })
+
 export class InscriptionPage implements OnInit {
   @Input() registrationInfo: any = {
     email: '',
@@ -37,12 +38,13 @@ export class InscriptionPage implements OnInit {
   async _openModal(title, content) {
     const modal = await this.modalCtrl.create({
       component: ModalComponent,
-      backdropDismiss: false,
+      //component: document.getElementById('modal'),
       componentProps: {
         "title": title,
         "content": content,
       },
     });
+    
     modal.onDidDismiss().then(() => {
       this.router.navigate(['/']);
     })
