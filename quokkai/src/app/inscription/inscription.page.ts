@@ -38,7 +38,7 @@ export class InscriptionPage implements OnInit {
   async _openModal(title, content) {
     const modal = await this.modalCtrl.create({
       component: ModalComponent,
-      //component: document.getElementById('modal'),
+      cssClass: 'modal',
       componentProps: {
         "title": title,
         "content": content,

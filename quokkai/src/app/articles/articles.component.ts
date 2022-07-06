@@ -18,6 +18,7 @@ export class ArticlesComponent implements OnInit {
   async _openModal(title, content) {
     const modal = await this.modalCtrl.create({
       component: ModalComponent,
+      cssClass: 'modal',
       componentProps: {
         title: title,
         content: content,
