@@ -25,13 +25,16 @@ export class ConnexionPage implements OnInit {
 
     if (!this.errorMessage) {
       this.ProfilService.connexion(this.loginInfo).subscribe((res) => {
+
+        this.errorMessage = res.status === 404 || res.status === 401;
+
         if (res.status === 404) {
-          this.message = 'Données incorrectes.';
-          this.errorMessage = true;
+          this.message = 'L\'email n\'est pas enregistré dans Quokkaï';
+        } else if (res.status === 401) {
+          this.message = "Le mot de passe est incorrect";
         } else if (res.status === 200) {
           this.loginInfo.email = '';
           this.loginInfo.password = '';
-          this.errorMessage = false;
           this.router.navigate(['/quokkai/actualites/' + res.region]);
         }
       });

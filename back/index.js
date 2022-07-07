@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const events = require('./events');
 const nodemailer = require('nodemailer');
+const bcrypt = require('bcryptjs');
 
 const connection = mysql.createConnection({
   host     : '34.155.38.235',
@@ -77,27 +78,38 @@ app.post('/articles' , (req, res) => {
   });
 });
 
+async function hashPassword(password) {
+  try {
+    return await bcrypt.hash(password, await bcrypt.genSalt(10));
+  } catch (err) {
+        console.log(err);
+  }
+}
+
 app.post('/inscription',(req,res) => {
 
-  const Email = req.body.email;
-  const Password = req.body.password;
-  const Region = req.body.region;
+  const email = req.body.email;
+  const password = req.body.password;
+  const region = req.body.region;
 
-  let qr = `SELECT * FROM user where mail='${Email}'`; ;
+  let qr = `SELECT * FROM user where mail='${email}'`; ;
 
   connection.query(qr,(err,result) => {
     if (err){console.log(err);}
     
-    if (Object.keys(result).length === 0){
-      qr = `INSERT INTO user(mail, password, region) VALUES ('${Email}', '${Password}', '${Region}')`; ;
-
-      connection.query(qr, (err, result) => {
-        if (err){console.log(err);}
-        res.send({
-          message:'data inserted',
-          status: 200
-        })
-      })
+    if (Object.keys(result).length === 0) {
+      bcrypt.hash(password, 10, function (err, hash) {
+        qr = `INSERT INTO user(mail, password, region) VALUES ('${email}', '${hash}', '${region}')`;
+        connection.query(qr, (err, result) => {
+          if (err) {
+            console.log(err);
+          }
+          res.send({
+            message: 'data inserted',
+            status: 200,
+          });
+        });
+      });
     } else {
       res.send({
         message: 'User already exists',
@@ -109,10 +121,10 @@ app.post('/inscription',(req,res) => {
 
 app.post('/connexion',(req,res) => {
 
-  const Email = req.body.email;
-  const Password = req.body.password;
+  const email = req.body.email;
+  const password = req.body.password;
 
-  const qr = `SELECT * FROM user where mail='${Email}' AND password='${Password}'`; ;
+  const qr = `SELECT * FROM user where mail='${email}'`; ;
 
   connection.query(qr,(err,result) => {
     if (err){console.log(err);}
@@ -123,10 +135,22 @@ app.post('/connexion',(req,res) => {
         status: 404
       })
     } else {
-      res.send({
-        region: result[0].region,
-        message: 'User found',
-        status: 200,
+      const clientHashedPassword = result[0].password;
+      const region = result[0].region;
+
+      bcrypt.compare(password, clientHashedPassword, function (err, result) {
+        if (result) {
+          res.send({
+            region: region,
+            message: 'User found',
+            status: 200,
+          });
+        } else {
+          res.send({
+            message: 'Wrong password',
+            status: 401,
+          });
+        }
       });
     }
   })
@@ -183,17 +207,20 @@ app.put('/mdpOublie', (req, res) => {
     
     if (Object.keys(result).length === 0){
       res.send({
+        message: 'User not found',
         status: 401
       })
     } else {
       const newPassword = generatePassword();
-      qr = `UPDATE user SET password='${newPassword}' WHERE mail='${email}'`;
 
-      connection.query(qr, (err, result) => {
-        if (err) {
-          console.log(err);
-        }
-      });
+       bcrypt.hash(newPassword, 10, function (err, hash) {
+         qr = `UPDATE user SET password='${hash}' WHERE mail='${email}'`;
+         connection.query(qr, (err, result) => {
+           if (err) {
+             console.log(err);
+           }
+         });
+       });
 
       const text =
         `Bonjour Mme/M,\n\n` +
@@ -203,8 +230,9 @@ app.put('/mdpOublie', (req, res) => {
       sendEmail(email, 'Quokkaï - Nouveau mot de passe', text);
 
       res.send({
-        status: 204
-      })
+        message: 'data inserted',
+        status: 204,
+      });
     }
   })
 });
