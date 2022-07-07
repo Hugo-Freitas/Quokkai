@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profil',
@@ -6,26 +7,14 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./profil.page.scss'],
 })
 export class ProfilPage implements OnInit {
-  @Input() userInfo: any = { email: '', region: '' };
-  isConnected = false;
-  displayLoginForm = false;
-  displayRegistrationForm = false;
+  @Input() userInfo: any = { email: 'cloclo@quokkai.fr', region: 'Bretagne' };
 
-  constructor() {}
+  constructor(private router: Router) {}
 
-  loginChanged(loginResult: boolean) {
-    this.isConnected = loginResult;
-    this.displayLoginForm = false;
-    this.displayRegistrationForm = false;
-  }
-
-  registertrationChanged() {
-    this.isConnected = false;
-    this.displayLoginForm = false;
-    this.displayRegistrationForm = false;
+  disconnect() {
+      this.router.navigate(['']);
   }
 
   ngOnInit(): void {
-    /* Charger les infos du profil */
   }
 }

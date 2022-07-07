@@ -7,6 +7,16 @@ ion-title {
     color: #000080;
 }
 
+ion-content {
+    width: calc(100% + 10px);
+    height: 100%;
+}
+
 ion-item {
-    background-color: red;
+    margin-left: -6%;
+    height: 100%;
+}
+
+ion-grid {
+    background-image: url('../../assets/icon/fond_total.png');
 }

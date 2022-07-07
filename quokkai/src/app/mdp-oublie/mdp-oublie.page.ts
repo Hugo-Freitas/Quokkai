@@ -1,33 +1,32 @@
-import { Component, Input, OnInit, AfterViewChecked } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ProfilService } from '../services/profil.service';
 
 @Component({
   selector: 'app-mdp-oublie',
   templateUrl: './mdp-oublie.page.html',
   styleUrls: ['./mdp-oublie.page.scss'],
 })
-export class MdpOubliePage implements OnInit, AfterViewChecked {
+export class MdpOubliePage implements OnInit {
   @Input() email?: string;
   errorMessage = false;
   validationMessage = false;
 
-  constructor() {}
+  constructor(private router: Router, private ProfilService: ProfilService) {}
 
   ngOnInit() {}
 
-  ngAfterViewChecked() {
-    this.errorMessage = false;
-    this.validationMessage = false;
+  forgottenPassword(): void {
+    const info = {
+      email: this.email
+    }
+    this.ProfilService.mdpOublie(info).subscribe((res) => {
+      this.validationMessage = res.status === 204;
+      this.errorMessage = res.status === 401;
+    });
   }
 
-  forgottenPassword(): void {
-    /* if l'email existe bien */
-    if (true) {
-      this.validationMessage = true;
-      this.errorMessage = false;
-    } else {
-      /* else message d'erreur */
-      this.errorMessage = true;
-      this.validationMessage = false;
-    }
+  redirect(route) {
+    this.router.navigate([route]);
   }
 }

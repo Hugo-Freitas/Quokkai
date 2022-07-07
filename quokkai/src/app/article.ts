@@ -4,5 +4,7 @@ export interface Article {
   content: string;
   region: string;
   id: number;
-  //rajouter date ?
+  date: Date;
+  image: String;
+  source: String;
 }

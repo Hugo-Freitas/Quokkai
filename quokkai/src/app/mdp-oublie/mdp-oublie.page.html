@@ -1,12 +1,22 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Mot de passe oublié</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <ion-input name="email" placeholder="E-mail" [(ngModel)]="email"></ion-input>
-  <ion-label *ngIf="errorMessage" color="danger">Les informations données sont incorrectes</ion-label>
-  <ion-label *ngIf="validationMessage" color="success">Un nouveau mot de passe vous a été envoyé</ion-label>
-  <ion-button (click)="forgottenPassword()">Envoi d'un nouveau mot de passe</ion-button>
+  <ion-grid>
+  
+    <ion-header>
+      <ion-title>Mot de passe oublié</ion-title>
+    </ion-header>
+
+      <ion-input name="email" placeholder="E-mail" [(ngModel)]="email"></ion-input>
+      <ion-label *ngIf="errorMessage" color="danger">Les informations données sont incorrectes</ion-label>
+      <ion-label *ngIf="validationMessage" color="success">Un nouveau mot de passe vous a été envoyé</ion-label>
+
+      <div class="button">
+        <ion-button color="clear" (click)="forgottenPassword()">Envoi d'un nouveau mot de passe</ion-button>
+      </div>
+
+      <div class="button">
+        <ion-button color="clear" (click)="redirect('')">Retour à la page de connexion</ion-button>
+      </div>
+      
+
+  </ion-grid>
 </ion-content>

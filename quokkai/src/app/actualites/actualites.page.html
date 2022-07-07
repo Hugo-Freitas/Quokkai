@@ -1,17 +1,21 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      {{region}}
+      {{region.name}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+  <ion-content [fullscreen]="true">
+
+    <ion-grid>
+
+      <ion-item class="ion-no-padding" color="none" lines="none" *ngFor="let article of articles">
   
-  <ion-item *ngFor="let article of articles">
+        <app-articles [article]="article"></app-articles>
+    
+      </ion-item>
 
-    <app-articles [article]="article" ></app-articles>
+    </ion-grid>
 
-  </ion-item>
-
-</ion-content>
+  </ion-content>
