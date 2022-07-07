@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./profil.page.scss'],
 })
 export class ProfilPage implements OnInit {
-  @Input() userInfo: any = { email: 'cloclo@quokkai.fr', region: 'Bretagne' };
+  @Input() userInfo: any = { email: 'hugofreitascostinha@hotmail.com', region: 'Île-de-France' };
 
   constructor(private router: Router) {}
 

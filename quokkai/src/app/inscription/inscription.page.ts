@@ -12,6 +12,7 @@ import { ModalComponent } from '../modal/modal.component';
   templateUrl: './inscription.page.html',
   styleUrls: ['./inscription.page.scss'],
 })
+
 export class InscriptionPage implements OnInit {
   @Input() registrationInfo: any = {
     email: '',
@@ -43,6 +44,7 @@ export class InscriptionPage implements OnInit {
         "content": content,
       },
     });
+    
     modal.onDidDismiss().then(() => {
       this.router.navigate(['/']);
     })

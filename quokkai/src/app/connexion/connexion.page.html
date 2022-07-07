@@ -17,7 +17,9 @@
   
           <button class="mdpOublie" (click)="redirect('/mdp-oublie')">Mot de passe oublié?</button>
 
-          <ion-label *ngIf="errorMessage" color="danger">{{message}}</ion-label>
+          <div class="errorMessage">
+            <ion-label *ngIf="errorMessage" color="danger">{{message}}</ion-label>
+          </div>
         
           <div class="logo">
             <img src="../../assets/icon/Quokkaie.png" alt="Logo">

@@ -1,12 +1,21 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>{{ title }}</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content>
-  {{ content }}
-  <ion-button (click)="_dismiss()">
-    Fermer
-  </ion-button>
-</ion-content>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>{{ title }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-grid>
+      <p>{{ content }}</p>
+      <div class="btn-holder">
+        <ion-button color="clear" (click)="_dismiss()">
+          Fermer
+        </ion-button>
+      </div>
+    </ion-grid>
+
+  </ion-content>
+
+
+

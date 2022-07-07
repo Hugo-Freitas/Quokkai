@@ -1,5 +1,5 @@
 ion-toolbar {
-    background-color: white;
+    --background: white;
     border-bottom: solid #000080;
 }
 
@@ -19,4 +19,6 @@ ion-item {
 
 ion-grid {
     background-image: url('../../assets/icon/fond_total.png');
+    background-repeat: repeat-y;
+    min-height: 100%;
 }

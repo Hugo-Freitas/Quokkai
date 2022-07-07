@@ -79,6 +79,8 @@ ion-button {
     background-color: white;
     box-shadow: 1px 1px 1px 1px white;
     font-size: 18px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 ion-select {
@@ -96,8 +98,4 @@ ion-select {
 
 ion-tab-button {
     color:#000080;
-}
-
-.errorMessage {
-    margin-top: 10px;
 }
